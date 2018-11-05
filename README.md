@@ -12,4 +12,4 @@ Front-end och JavaScript
 ◦ Om talet är jämt delbart med både Bish och Bosh-talet visas ’Bish-Bosh’ istället för talet.
 ◦ Denna implementation ställer också lite krav på övrig front-end
 ◦ För att testa om något är jämnt delbart så kollar man om resten är noll vid division (tips: modulusoperatorn
-%). 
+%).

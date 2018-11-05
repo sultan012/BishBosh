@@ -3,32 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Bish Bosh</title>
-    <link rel="stylesheet" type="text/css" href="style.css">;
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body  onload="myFunction()">
-<h1>Bish-Bosh 2.0</h1>
-<p id="text1"> </p>
-<p id="text2"> </p>
-<p id="text3"> </p>
-<p>Om talet är jämnt delbart med båda dina tal visas 'Bish-Bosh'.</p>
+<Section>
+    <h1>Bish-Bosh 2.0</h1>
+</Section>
+
+<section>
+    <p id="text1"> </p>
+    <p id="text2"> </p>
+    <p id="text3"> </p>
+    <p>Om talet är jämnt delbart med båda dina tal visas 'Bish-Bosh'.</p>
+</section>
+
+<section>
 <div class="input">
-<<span>Antal Nummer: </span> <span id="demo1"> </span> <input type="range" min="1" max="30" value="14" id="myInput1" oninput="myFunction()" >
+    <span>Antal Nummer : </span>  <input class="slider" type="range" min="1" max="50" value="14" id="myInput1" oninput="myFunction()"> <span id="demo1"> </span>
 </div>
 
 <div class="input">
-    <span>Bish Nummer: </span> <span id="demo2"> </span> <input type="range" min="1" max="10" value="3" id="myInput2" oninput="myFunction()" >
+    <span>Bish Nummer : </span> <input class="slider" type="range" min="1" max="10" value="3" id="myInput2" oninput="myFunction()"> <span id="demo2"> </span>
 </div>
 
 <div class="input">
-    <span>Boch Nummer: </span> <span id="demo3"> </span> <input type="range" min="1" max="10" value="4" id="myInput3" oninput="myFunction()" >
+    <span>Boch Nummer : </span>  <input class="slider" type="range" min="1" max="10" value="4" id="myInput3" oninput="myFunction()"> <span id="demo3"> </span>
 </div>
-<div class="flex-container ">
-    <div id="demo4"></div>
+</section>
+
+<div class="flex-container">
+    <div id="result"></div>
 </div>
 
 <script>
     function myFunction() {
-        document.getElementById("demo4").innerHTML="";
+        document.getElementById("result").innerHTML="";
         var antal = document.getElementById("myInput1").value;
         var bish = document.getElementById("myInput2").value;
         var bosh = document.getElementById("myInput3").value;
@@ -36,9 +46,9 @@
         document.getElementById("demo1").innerHTML = antal;
         document.getElementById("demo2").innerHTML = bish;
         document.getElementById("demo3").innerHTML = bosh;
-        document.getElementById("text1").innerHTML = " Bish-Bosh listar tal mellan 1 och det du väljer nedan ( " + antal + " ).";
-        document.getElementById("text2").innerHTML = " Om talet är jämnt delbart med ditt valda bish-tal ( " + bish + " ) visas 'Bish' istället för talet.";
-        document.getElementById("text3").innerHTML = " Om talet är jämnt delbart med ditt valda bish-tal ( " + bosh + " ) visas 'Bosh' istället för talet.";
+        document.getElementById("text1").innerHTML = " Bish-Bosh listar tal mellan <strong> 1 </strong> och det du väljer nedan <strong> ( " + antal + " ) </strong>.";
+        document.getElementById("text2").innerHTML = " Om talet är jämnt delbart med ditt valda bish-tal <strong>( " +  bish + " )</strong> visas 'Bish' istället för talet.";
+        document.getElementById("text3").innerHTML = " Om talet är jämnt delbart med ditt valda bish-tal <strong> ( " + bosh + " ) </strong> visas 'Bosh' istället för talet.";
 
         var result ="";
         for(var i=1 ; i<= antal ; i++){
@@ -47,18 +57,21 @@
             if (i% parseInt(bish)== 0 && i% parseInt(bosh)== 0){
                     result = "Bish-Bosh" ;
                     child.setAttribute("class","bishBosh");
+
                 } else if (i% parseInt(bish)== 0){
                     //document.getElementById("demo4").innerHTML = "Bish";
-                result = "Bish" ;
-                child.setAttribute("class","bish");
-            } else if (i% parseInt(bosh)== 0) {
-                result =  "Bosh" ;
-                child.setAttribute("class","bosh");
-            } else {
-                result =  i  ;
+                    result = "Bish" ;
+                    child.setAttribute("class","bish");
+
+                } else if (i% parseInt(bosh)== 0) {
+                    result =  "Bosh" ;
+                    child.setAttribute("class","bosh");
+
+                } else {
+                    result =  i  ;
             }
                 child.textContent= result ;
-            document.getElementById("demo4").appendChild(child);
+            document.getElementById("result").appendChild(child);
         }
 
     }
